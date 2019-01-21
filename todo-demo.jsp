@@ -5,22 +5,22 @@
 <body>
 
 <form action="todo-demo.jsp">
-	Add New Item <input type="text" name="item" />
+	Add new item: <input type="text" name="item" />
 	
 	<input type="submit" value="Submit" />
 </form>
 
-
 <%
-
+	
 	List<String> items = (List<String>) session.getAttribute("myToDoList");
 
 	
+	if (items == null) {
 		items = new ArrayList<String>();
 		session.setAttribute("myToDoList", items);
 	}
 	
-
+	
 	String item = request.getParameter("item");
 	if (item != null) {
 		items.add(item);
@@ -29,7 +29,7 @@
 
 
 <hr>
-<b>My todo list:</b> <br/>
+<b>To List Items:</b> <br/>
 
 <ol>
 <%
